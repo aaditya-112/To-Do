@@ -33,6 +33,8 @@ const Home = () => {
 
     fetchTasks();
   }, []);
+
+  
   const addTask = async () => {
     const trimmedTask = task.trim();
     if (!trimmedTask) return;

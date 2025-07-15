@@ -39,7 +39,12 @@ const updatetask = async(req, res)=>{
 
 const deletetask = async(req, res)=>{
     try {
-        await TodoListModel.findByIdAndDelete(req.params.id)
+       const todo= await TodoListModel.findByIdAndDelete(req.params.id)
+
+       if(!todo){
+        res.status(404).json({massage:"task not found"});
+       }
+
         res.status(200).json({message:"deleted todo task" });
     } catch (error) {
         console.log(error);
