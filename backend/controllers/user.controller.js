@@ -21,8 +21,8 @@ const signup =async(req, res)=>{
         });
         await newUser.save();
         if (newUser){
-            await generateToken(newUser._id, res);
-            res.status(201).json({message:"new user added" , newUser})
+            const token =await generateToken(newUser._id, res);
+            res.status(201).json({message:"new user added" , newUser, token} )
         }
         
     } catch (error) {
