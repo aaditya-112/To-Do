@@ -16,6 +16,10 @@ const userSchema = new mongoose.Schema({
         require:true,
         minlength: 6
     },
+    profileImage:{
+        type:String,
+        default:""
+    }
 });
 
 module.exports = mongoose.model("User", userSchema);

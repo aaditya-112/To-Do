@@ -16,6 +16,9 @@ const Signin = () => {
           username,
           email,
           password,
+        },
+        {
+          withCredentials: true, // <-- this allows cookies to be set by the server
         }
       );
       console.log(data);

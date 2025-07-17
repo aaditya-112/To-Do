@@ -14,8 +14,9 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use(cors({
-  origin:"*",
-  methods:['GET','POST','PUT','DELETE']
+  origin:"http://localhost:5173",
+  methods:['GET','POST','PUT','DELETE'],
+  credentials: true,
 }))
 
 const todolistRoute = require("./routes/todoList.route");
