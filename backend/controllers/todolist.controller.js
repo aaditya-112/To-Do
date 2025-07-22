@@ -2,10 +2,11 @@ const TodoListModel = require("../model/todo.model");
 
 const createTask = async(req, res)=>{
     const {task, completed} = req.body;
-
+    const user = req.user.id;
     const todoTask = new TodoListModel({
         task,
-        completed
+        completed,
+        user
     });
     try {
         const newtask = await todoTask.save();
@@ -17,7 +18,7 @@ const createTask = async(req, res)=>{
 };
 const getAlltask = async(req, res)=>{
     try {
-        const list = await TodoListModel.find()
+        const list = await TodoListModel.find({user : req.user.id})
         res.status(200).json({message:"got todo list", list });
     } catch (error) {
         console.log(error);
